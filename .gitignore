@@ -1,0 +1,4 @@
+server_program
+*.o
+*.temp
+*.tmp
