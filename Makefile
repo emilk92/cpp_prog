@@ -1,5 +1,5 @@
 CXX='g++'
-OUTPUT_PROGRAM=server_program
+OUTPUT_PROGRAM=cpp-prog
 
 all: server_program.cpp
 	$(CXX) *.cpp -o $(OUTPUT_PROGRAM)
