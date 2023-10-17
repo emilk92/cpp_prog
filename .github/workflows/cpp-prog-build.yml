@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: package artifacts
+      run: |
+        mkdir artifacts
+        cp cpp-prog artifacts/
+    - name: publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: cpp-release
+        path: artifacts
+
