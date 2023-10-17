@@ -20,14 +20,12 @@ spec:
         app: cpp-prog
     spec:
       containers:
-      - name: cpp-prog-container
-        image: debian:latest
+      - name: cpp-prog-docker
+        image: debian:buster
         ports:
           - name: custom-program
             containerPort: 3000
             protocol: TCP
-        command:
-        - ./cpp-prog 3000
         resources:
           limits:
             cpu: 2000m
