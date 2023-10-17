@@ -20,8 +20,8 @@ jobs:
         mkdir artifacts
         cp cpp-prog artifacts/
     - name: publish artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: cpp-release
+        name: cpp-prog
         path: artifacts
 
