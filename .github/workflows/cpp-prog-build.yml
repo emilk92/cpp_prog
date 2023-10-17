@@ -2,26 +2,24 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches: [ "*" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    permissions:
+      packages: write
+      contents: read
     steps:
-    - uses: actions/checkout@v3
-    - name: make
-      run: make
-    - name: package artifacts
+    - uses: actions/checkout@v4
+    - name: make and package artifacts
       run: |
+        make
         mkdir artifacts
-        cp cpp-prog artifacts/
-    - name: publish artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: cpp-prog
-        path: artifacts/cpp-prog
-
+        mv cpp-prog artifacts/
+    - name: build docker image
+      run: docker build --tag ghcr.io/emilk92/cpp-prog-docker --label "runnumber=${GITHUB_RUN_ID}" .
+    - name: login to registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+    - name: push image
+      run: docker push ghcr.io/emilk92/cpp-prog-docker:latest
