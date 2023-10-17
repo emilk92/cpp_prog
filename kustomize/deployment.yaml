@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpp-prog
+spec:
+  minReadySeconds: 3
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels: cpp-prog
+  template:
+    metadata:
+      labels:
+        app: cpp-prog
+    spec:
+      containers:
+      - name: cpp-prog-container
+        image: debian:latest
+        ports:
+          - name: custom-program
+            containerPort: 3000
+            protocol: TCP
+        command:
+        - ./cpp-prog 3000
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
