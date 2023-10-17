@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: cpp-prog-docker
-        image: debian:buster
+        image: ghcr.io/emilk92/cpp-prog-docker:latest
         ports:
           - name: custom-program
             containerPort: 3000
