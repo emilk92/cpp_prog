@@ -9,19 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: write
-      contents: write
+      contents: read
     steps:
-    - uses: actions/checkout@v3
-    - name: make
-      run: make
-    - name: package artifacts
+    - uses: actions/checkout@v4
+    - name: make and package artifacts
       run: |
+        make
         mkdir artifacts
-        cp cpp-prog artifacts/
+        mv cpp-prog artifacts/
     - name: Login to Container registry
       uses: docker/login-action@v3
       with:
-        registry: https://ghcr.io/emilk92
+        registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: build docker image
