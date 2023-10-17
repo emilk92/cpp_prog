@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
      printf("Incoming connection from %s port %d\n",
             inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
-     send(newsockfd, "Hello, world! 2\n", 13, 0);
+     send(newsockfd, "Hello, world! 44\n", 13, 0);
 
      bzero(buffer,256);
      }
