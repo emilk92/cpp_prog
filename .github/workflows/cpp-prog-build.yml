@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
     steps:
     - uses: actions/checkout@v3
     - name: make
@@ -15,24 +18,15 @@ jobs:
       run: |
         mkdir artifacts
         cp cpp-prog artifacts/
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Login to Container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: build docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: cpp-prog-docker:latest
+    - name: Login to Container registry
+      uses: docker/login-action@v3
+      with:
+        registry: https://ghcr.io/emilk92
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: build docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ github.actor }}/cpp-prog-docker:latest
