@@ -49,6 +49,8 @@ int main(int argc, char *argv[])
 
      clilen = sizeof(cli_addr);
 
+     while(true)
+     {
      newsockfd = accept(sockfd, 
                  (struct sockaddr *) &cli_addr, &clilen);
      if (newsockfd < 0) 
@@ -59,7 +61,7 @@ int main(int argc, char *argv[])
      send(newsockfd, "Hello, world!\n", 13, 0);
 
      bzero(buffer,256);
-
+     }
      n = read(newsockfd,buffer,255);
      if (n < 0) error("ERROR reading from socket");
      printf("Here is the message: %s\n",buffer);
