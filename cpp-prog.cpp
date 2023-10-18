@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
      newsockfd = accept(sockfd, 
                  (struct sockaddr *) &cli_addr, &clilen);
      if (newsockfd < 0) 
-          error("ERROR on accept");
+          error("ERROR2 on accept");
 
      printf("Incoming connection from %s port %d\n",
             inet_ntoa(cli_addr.sin_addr), ntohs(cli_addr.sin_port));
