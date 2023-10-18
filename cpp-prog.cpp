@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
      if (bind(sockfd, (struct sockaddr *) &serv_addr,
               sizeof(serv_addr)) < 0) 
-              error("ERROR on binding");
+              error("ERROR2 on binding");
 
      listen(sockfd,5);
 
