@@ -4,9 +4,6 @@ metadata:
   name: cpp-prog
 spec:
   replicas: 5
-  minReadySeconds: 3
-  revisionHistoryLimit: 5
-  progressDeadlineSeconds: 60
   strategy:
     rollingUpdate:
       maxUnavailable: 0
