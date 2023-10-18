@@ -5,9 +5,7 @@ metadata:
 spec:
   replicas: 5
   strategy:
-    rollingUpdate:
-      maxUnavailable: 3
-    type: RollingUpdate
+    type: Recreate
   selector:
     matchLabels: 
       app: cpp-prog
