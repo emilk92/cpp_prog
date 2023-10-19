@@ -12,7 +12,7 @@ spec:
   selector:
     matchLabels: 
       app: cpp-prog
-  templatecpp-prog-imagerepo:
+  template:
     metadata:
       labels:
         app: cpp-prog
