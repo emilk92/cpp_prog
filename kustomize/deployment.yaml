@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: cpp-prog-docker
-        image: ghcr.io/emilk92/cpp-prog-docker:latest
+        image: ghcr.io/emilk92/cpp-prog-docker
         ports:
           - containerPort: 3000
