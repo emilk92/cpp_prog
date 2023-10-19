@@ -1,7 +1,7 @@
 name: C/C++ CI
 
 env:
-  CPP_PROG_IMAGE_TAG: 1.0
+  CPP_PROG_IMAGE_TAG: "1.0"
 
 on:
   push:
