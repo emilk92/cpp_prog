@@ -21,7 +21,7 @@ jobs:
       uses: flownative/action-docker-build@v1
       with:
         tag_ref: ${{ github.ref }}
-        image_name: cpp-prog-docker
+        image_name: ghcr.io/emilk92/cpp-prog-docker
         registry_password: ${{ secrets.GITHUB_TOKEN }}
     - name: push docker image to registry
       run: docker push "ghcr.io/emilk92/cpp-prog-docker:latest"
