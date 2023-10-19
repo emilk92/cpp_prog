@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: cpp-prog-docker
-        image: ghcr.io/emilk92/cpp-prog-docker
+        image: ghcr.io/emilk92/cpp-prog-docker:1.0.0 # {"$imagepolicy": "flux-system:cpp-prog-imagepolicy"}
         ports:
           - containerPort: 3000
