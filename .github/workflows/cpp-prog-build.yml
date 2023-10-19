@@ -18,7 +18,7 @@ jobs:
         mkdir artifacts
         mv cpp-prog artifacts/
     - name: build docker image
-      run: docker build --tag ${{GITHUB_RUN_NUMBER}} .
+      run: docker build --tag "${{GITHUB_RUN_ID}}" .
     - name: login to registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
     - name: push image
