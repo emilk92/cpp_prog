@@ -5,11 +5,14 @@ metadata:
 spec:
   replicas: 5
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels: 
       app: cpp-prog
-  template:
+  templatecpp-prog-imagerepo:
     metadata:
       labels:
         app: cpp-prog
