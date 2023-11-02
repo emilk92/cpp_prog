@@ -1,7 +1,7 @@
 name: C/C++ CI
 
 env:
-  CPP_PROG_IMAGE_TAG: "1.1.9"
+  CPP_PROG_IMAGE_TAG: "1.1.10"
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
         mkdir artifacts
         mv cpp-prog artifacts/
     - name: build docker image
-      run: docker build -t cpp-prog-docker:latest .
+      run: docker build -t cpp-prog-docker:$CPP_PROG_IMAGE_TAG -t cpp-prog-docker:latest .
     - name: tag docker image
       run: docker tag cpp-prog-docker:latest ghcr.io/emilk92/cpp-prog-docker:$CPP_PROG_IMAGE_TAG
     - name: login to package registry
