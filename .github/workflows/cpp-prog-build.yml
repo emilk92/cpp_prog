@@ -27,4 +27,4 @@ jobs:
     - name: login to package registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
     - name: push docker image to registry
-      run: docker push ghcr.io/emilk92/cpp-prog-docker:${CPP_PROG_IMAGE_TAG}
+      run: docker push --all-tags ghcr.io/emilk92/cpp-prog-docker:${CPP_PROG_IMAGE_TAG}
